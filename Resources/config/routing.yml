@@ -1,0 +1,18 @@
+unrtech_back_office_homepage:
+    pattern:  /adm
+    defaults: { _controller: UnrtechBackOfficeBundle:Dashboard:index }
+unrtech_back_office_action:
+    pattern:  /adm/{class}:{bundle}:{action}
+    defaults: { _controller: UnrtechBackOfficeBundle:Dashboard:dashBoardAdmin }
+unrtech_back_office_add:
+    pattern:  /adm/add/{entity}/{bundle}
+    defaults: { _controller: UnrtechBackOfficeBundle:Dashboard:adminAdd }
+unrtech_back_office_show:
+    pattern:  /adm/show/{entity}/{bundle}/{id}
+    defaults: { _controller: UnrtechBackOfficeBundle:Dashboard:adminShow }
+unrtech_back_office_edit:
+    pattern:  /adm/edit/{entity}/{bundle}/{id}
+    defaults: { _controller: UnrtechBackOfficeBundle:Dashboard:adminEdit }
+unrtech_back_office_delete:
+    pattern:  /adm/delete/{entity}/{bundle}/{id}
+    defaults: { _controller: UnrtechBackOfficeBundle:Dashboard:adminDelete }

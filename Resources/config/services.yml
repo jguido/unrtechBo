@@ -1,0 +1,21 @@
+parameters:
+#    unrtech_back_office.example.class: Unrtech\BackOfficeBundle\Example
+
+services:
+#    unrtech_back_office.example:
+#        class: %unrtech_back_office.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
+    product_admin_entity:
+        class: Unrtech\BackOfficeBundle\ManagerAdmin\EntityAdmin
+        arguments:
+            headers : ["Id", "Name", "Reference", "HT Price", "Available stock"]
+            labels : ["id", "name", "reference", "description", "priceHt", "availableStock"]
+            inputs : ["id", "name", "reference", "description", "priceHt", "availableStock", "packaging", "weight", "metaTitle", "metaKeywords", "metaDescription"]
+
+    user_admin_entity:
+        class: Unrtech\BackOfficeBundle\ManagerAdmin\EntityAdmin
+        arguments:
+            headers : ["Id", "Name", "Surname", "Login", "Email"]
+            labels : ["id", "name", "surname", "login", "email"]
+            inputs : ["id", "name", "surname", "login", "password", "confirmed", "phone"]
+#            inputs : ["id", "name", "surname", "login", "password", "confirmed", "phone", "UnrtechUserBundle:Address", "UnrtechUserBundle:UserGroup"]

@@ -1,0 +1,13 @@
+{% extends "UnrtechBackOfficeBundle:Admin:admin_base.html.twig" %}
+
+{% block title %}Dashboard{% endblock %}
+{% block adminContent %}
+    <h2>Welcome on the admin back office dashboard</h2>
+    <div class="row">
+        {% if entity is defined and entity|length > 0%}
+            {% for input in inputs %}
+                <p>{{ input }} : {{ attribute(entity, input) }}</p>
+            {% endfor %}
+        {% endif %}
+    </div>
+{% endblock %}

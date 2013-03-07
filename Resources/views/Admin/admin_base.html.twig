@@ -1,0 +1,50 @@
+{% extends "UnrtechBackOfficeBundle:Admin:admin_layout.html.twig" %}
+{% block meta %}{% endblock %}
+{% block title %}Admin {% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+{% block javascripts_inc %}
+    {{ parent() }}
+{% endblock %}
+{% block body %}
+    {% block flashes %}
+        {% for flashMessage in app.session.flashbag.get('error') %}
+            <div class="alert alert-error">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                {{ flashMessage }}
+            </div>
+        {% endfor %} 
+        {% for flashMessage in app.session.flashbag.get('warning') %}
+            <div class="alert">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                {{ flashMessage }}
+            </div>
+        {% endfor %} 
+        {% for flashMessage in app.session.flashbag.get('info') %}
+            <div class="alert alert-info">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                {{ flashMessage }}
+            </div>
+        {% endfor %} 
+        {% for flashMessage in app.session.flashbag.get('success') %}
+            <div class="alert alert-success">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                {{ flashMessage }}
+            </div>
+        {% endfor %}
+    {% endblock flashes %}
+    <div class="container">
+        <div class="row">
+            {% block adminNav %}
+                <div class="span9">
+                    {% render "UnrtechBackOfficeBundle:Dashboard:navigation" %}
+                    {#{% include "UnrtechBackOfficeBundle:Admin:admin_nav.html.twig" %}#}
+                </div>
+            {% endblock %}
+            <div class="span9">{% block adminContent %}{% endblock %}</div>
+        </div>
+    </div>
+    {% block adminFoot %}<div class="footer">Unrtech 2012.</div>{% endblock %}
+    {% block javascripts %}{% endblock %}
+{% endblock %}

@@ -1,0 +1,17 @@
+{% if entities is defined and entities|length > 0 %}
+    {% for entity in entities %}
+        <div class="btn-group">
+            <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                {{ entity.name }}
+                <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+                {% if entity.actions is defined and entity.actions|length > 0 %}
+                    {% for action in entity.actions %}
+                    <li><a href="{{ path('unrtech_back_office_action', {'class':entity.name, 'bundle': entity.bundle,'action':action}) }}">{{ action }}</a></li>
+                    {% endfor %}
+                {% endif %}
+            </ul>
+        </div>
+    {% endfor %}
+{% endif %}

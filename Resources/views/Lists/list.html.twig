@@ -1,0 +1,38 @@
+{% extends "UnrtechBackOfficeBundle:Admin:admin_base.html.twig" %}
+
+{% block title %}Dashboard{% endblock %}
+{% block adminContent %}
+    <h2>Welcome on the admin back office dashboard</h2>
+    <table class="table table-hover">
+    {% if headers is defined%}
+        <tr>
+            {% for header in headers%}
+                <th>{{ header }}</th>
+            {% endfor %}
+            <th>Actions</th>
+        </tr>
+    {% endif %}
+    {% if entities is defined and entities|length > 0 %}
+        {% for entity in entities %}
+            <tr>
+                {% if entity|length > 0 %}
+                    {% if labels is defined and labels|length > 0 %}
+                        {% for label in labels %}<td>{{ attribute(entity, label) }}</td>{% endfor %}
+                    {% endif %}
+                {% endif %}
+                {% if actions is defined and actions|length > 0 %}
+                    <td>
+                        {% for action in actions %}
+                            <a href="{{ path('unrtech_back_office_'~action, {'entity':adminEntity,'bundle':bundle,'id':entity.id}) }}">
+                                <img src="{{ asset('bundles/unrtechbackoffice/images/'~action~'.png') }}" alt="{{ action }}"/>
+                            </a>
+                        {% endfor %}
+                    </td>
+                {% endif %}
+            </tr>
+        {% endfor %}
+    {% else %}
+                <tr class="info"><td colspan="{{ headers|length }}"><h4>No {{ entityName }} actually</h4></td></tr>
+    {% endif %}
+    </table>
+{% endblock %}
